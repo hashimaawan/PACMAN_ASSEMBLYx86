@@ -2,7 +2,7 @@
 .model flat, stdcall
 .stack 4096
 
-Include irvine32.inc
+Include irvine32.inc	 ; Includes the Irvine32 library for common functions
 includelib Winmm.lib
 
 PlaySound PROTO,
@@ -48,6 +48,9 @@ m5 byte"|       ||    ___||  _    ||       |",0ah,0
 m6 byte"| ||_|| ||   |___ | | |   ||       |",0ah,0
 m7 byte"|_|   |_||_______||_|  |__||_______|",0ah,0
 
+
+;--- Instruction screen
+
 i1 byte " Pacman Game Instructions",0
 i2 byte "Guide Pacman through the maze, consuming all pellets while avoiding ghosts.",0
 i3 byte "Use w ,a,s,d to navigate Pacman through the maze's corridors.",0
@@ -55,29 +58,29 @@ i4 byte "Avoid contact with ghosts; they will cost a life.",0
 i5 byte "Collect fruits for extra points and aim for high scores!.Press l to go back",0
 title9 byte " Press G to start the game ", 0ah,0
 
+;-----------------------------
+
+;-- Menu screen
 prompt DB "Enter your name: ", 0
 nameStr DB 255 Dup (?) 
 
-
 	strtd byte "#"
 
-
 x dword ?
-;------------
 myInt DWORD ? 
 myChar BYTE ? 
 myStr BYTE 30 dup(0) 
 myPrompt BYTE "Enter a string:",0 
 myPrompt2 BYTE "Enter a number:",0 
 
+;--- VARIABLES FOR PLAYERNAME AND ENDSCREEN
 livesprompt byte "Lives : ",0
 endscreen byte "Player name : " ,0
 playerprompt byte "Player Name : ",0
 ;playername 255 dup(0)
-  ;  inputChar BYTE ?
 
-;--------   Q5
 
+;--- GAMEPLAY VARIABLES LIKE GROUND,WALLS
 ground BYTE "_______________________________________________________________________________________",0
 ground1 BYTE "______________________________________________________________________________________",0
 rightside byte "|",0
@@ -316,10 +319,9 @@ main Endp
 
 
 
+;------------- STARTING LEVEL 1
 
 Level1 proc 
-
-
 
 call maze
 	mov eax,15
@@ -344,7 +346,6 @@ INVOKE PlaySound, OFFSET beginsound1, NULL,11h
 		mov esi,offset score1
 
 		mov [esi],bl
-		;call clrscr
 		call Level2
 		ret
 		lev2notcome:
@@ -361,10 +362,10 @@ INVOKE PlaySound, OFFSET beginsound1, NULL,11h
 		nocollisiong:
 		mov bl,enemyx
 		cmp bl,100
-		jnge okkk
+		jnge notcollide
 		call UpdateEnemy  
 		mov enemyx,26
-		okkk:
+		notcollide:
 		
 		cmp lives,0
 		jne gamenotover
