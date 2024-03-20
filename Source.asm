@@ -80,7 +80,7 @@ playerprompt byte "Player Name : ",0
 ;playername 255 dup(0)
 
 
-;--- GAMEPLAY VARIABLES LIKE GROUND,WALLS
+;--- GAMEPLAY VARIABLES LIKE GROUND,WALLS, and Enemy,Player positions
 ground BYTE "_______________________________________________________________________________________",0
 ground1 BYTE "______________________________________________________________________________________",0
 rightside byte "|",0
@@ -98,9 +98,7 @@ enemy2y byte 7
 enemy3x byte 27
 enemy3y byte 21
 
-;wall2 byte "7"
 temp byte ?
-
 
 strScore BYTE "Score : ",0
 score BYTE 0
@@ -259,16 +257,17 @@ pose byte 0
 pose1 byte 0 
 
 score1 byte 0
-;pacman_beginning	db "pacman_beginning.wav",0
+
+
+;----------  CODE PART
 .code
 invoke GetTickCount
-Main PROC
 
- 
-;INVOKE PlaySound, OFFSET pacman_beginning, NULL,0h
+
+Main PROC
 INVOKE PlaySound, OFFSET beginsound, NULL,11h
 
-;call testingpro
+
 call startscreen
 call Namegame
 getback:
@@ -411,7 +410,7 @@ INVOKE PlaySound, OFFSET beginsound1, NULL,11h
 			mov eax,14
 		call SetTextColor
 
-		mov dl,106						;move cursor to coordinates
+		mov dl,106		 ;move cursor to coordinates
 		mov dh,1
 		call Gotoxy
 
@@ -957,8 +956,6 @@ INVOKE PlaySound, OFFSET beginsound1, NULL,11h
 	jmp addup52
 
 	addup12:
-	;-----
-	;food collision
 		mov bx,0
 		mov bl,ypos
 		inc bl
