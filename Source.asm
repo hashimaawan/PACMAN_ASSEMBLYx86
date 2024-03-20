@@ -331,8 +331,6 @@ call maze
 	mov edx,OFFSET promptlevel1
 	call WriteString
 
-		;seeee:
-	
 	
 gameLoop:
 INVOKE PlaySound, OFFSET beginsound1, NULL,11h
@@ -471,12 +469,7 @@ INVOKE PlaySound, OFFSET beginsound1, NULL,11h
 		je continue
 		jmp pausegame
 
-	
-	;	call maze
-		;call clrscr
-		
 
-	;	call DrawPlayer
 		jmp gameLoop
 
 	continue:
@@ -563,7 +556,7 @@ INVOKE PlaySound, OFFSET beginsound1, NULL,11h
 	cmp al, xfood1
 	je addup3
 
-	;up mid
+	; ----  UP MID
 	fourthcheckfood:
 	
 		mov ecx,75
