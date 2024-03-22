@@ -9,7 +9,7 @@ TO Run this on windows do following steps
 1) Download and Open Visual Studio
 2) Configure Irvine32 lib.
 3) Configure other settings to make the enviroment compatible 
-4) To make the environment comaptible follow this video : https://youtu.be/p4GVemUQ4qo?feature=shared
+4) To make the environment compatible follow this video : https://youtu.be/p4GVemUQ4qo?feature=shared
 
 /---------------------------   DESCRIBING THE GAME     --------------------------------------/
 
