@@ -19,7 +19,7 @@ TO Run this on windows do following steps
 -> Food items are represented by '*'. These items are stored in arrays.
 -> We monitor the player's position, and when the player's coordinates match those of a food item, we update the player's score accordingly.
 
-/-----------------------------------------------------------------------------------------------------------------------------------------------------------------/
+/-----------------------------------------------------------------------------------------------------------------------/
 
 In case of any queries regarding the code and project, feel free to contact me at awanhashim800@gmail.com
  
